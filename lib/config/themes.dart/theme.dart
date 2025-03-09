@@ -32,17 +32,15 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: primaryColor,
-    primaryColorDark: primaryColor.withOpacity(0.8),
-    primaryColorLight: primaryColor.withOpacity(0.2),
+    primaryColorDark: primaryColor.withValues(alpha: 0.8),
+    primaryColorLight: primaryColor.withValues(alpha: 0.2),
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
       error: errorColor,
-      background: lightBackgroundColor,
       surface: lightCardColor,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
-      onBackground: lightTextColor,
       onSurface: lightTextColor,
       onError: Colors.white,
     ),
@@ -236,29 +234,29 @@ class AppTheme {
 
     // Checkbox Theme
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
         return Colors.transparent;
       }),
-      checkColor: MaterialStateProperty.all(Colors.white),
+      checkColor: WidgetStateProperty.all(Colors.white),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
 
     // Switch Theme
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
         return Colors.grey;
       }),
-      trackColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
-          return primaryColor.withOpacity(0.5);
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return primaryColor.withValues(alpha: 0.5);
         }
-        return Colors.grey.withOpacity(0.5);
+        return Colors.grey.withValues(alpha: 0.5);
       }),
     ),
   );
@@ -267,17 +265,15 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: primaryColor,
-    primaryColorDark: primaryColor.withOpacity(0.8),
-    primaryColorLight: primaryColor.withOpacity(0.2),
+    primaryColorDark: primaryColor.withValues(alpha: 0.8),
+    primaryColorLight: primaryColor.withValues(alpha: 0.2),
     colorScheme: const ColorScheme.dark(
       primary: primaryColor,
       secondary: secondaryColor,
       error: errorColor,
-      background: darkBackgroundColor,
       surface: darkCardColor,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
-      onBackground: darkTextColor,
       onSurface: darkTextColor,
       onError: Colors.white,
     ),
@@ -471,29 +467,29 @@ class AppTheme {
 
     // Checkbox Theme
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
         return Colors.transparent;
       }),
-      checkColor: MaterialStateProperty.all(Colors.white),
+      checkColor: WidgetStateProperty.all(Colors.white),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
 
     // Switch Theme
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
         return Colors.grey;
       }),
-      trackColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
-          return primaryColor.withOpacity(0.5);
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return primaryColor.withValues(alpha: 0.5);
         }
-        return Colors.grey.withOpacity(0.5);
+        return Colors.grey.withValues(alpha: 0.5);
       }),
     ),
   );

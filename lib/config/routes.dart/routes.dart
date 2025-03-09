@@ -1,11 +1,6 @@
-// lib/config/routes.dart
-
 import 'package:flutter/material.dart';
 
-// Import your pages
-
 class AppRoutes {
-  // Route names as constants
   static const String splash = '/';
   static const String login = '/login';
   static const String register = '/register';
@@ -22,113 +17,67 @@ class AppRoutes {
   static const String search = '/search';
   static const String wishlist = '/wishlist';
 
-  // Route generator function
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case splash:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const HomePage(),
-      //   );
-      // case login:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const LoginPage(),
-      //   );
-      // case register:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const RegisterPage(),
-      //   );
       // case home:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const HomePage(),
-      //   );
+      //   return MaterialPageRoute(builder: (_) => const HomePage());
+      // case login:
+      //   return MaterialPageRoute(builder: (_) => const LoginPage());
+      // case register:
+      //   return MaterialPageRoute(builder: (_) => const RegisterPage());
       // case productList:
-      //   final Map<String, dynamic>? args = settings.arguments as Map<String, dynamic>?;
-      //   final String? categoryId = args?['categoryId'] as String?;
-      //   final String? searchQuery = args?['searchQuery'] as String?;
-      //
+      //   final args = settings.arguments as Map<String, dynamic>?;
       //   return MaterialPageRoute(
       //     builder: (_) => ProductListPage(
-      //       categoryId: categoryId,
-      //       searchQuery: searchQuery,
+      //       categoryId: args?['categoryId'],
+      //       searchQuery: args?['searchQuery'],
       //     ),
       //   );
       // case productDetail:
-      //   final Product product = settings.arguments as Product;
+      //   final product = settings.arguments;
       //   return MaterialPageRoute(
       //     builder: (_) => ProductDetailPage(product: product),
       //   );
       // case cart:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const CartPage(),
-      //   );
+      //   return MaterialPageRoute(builder: (_) => const CartPage());
       // case checkout:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const CheckoutPage(),
-      //   );
+      //   return MaterialPageRoute(builder: (_) => const CheckoutPage());
       // case orderSuccess:
-      //   final String? orderId = settings.arguments as String?;
+      //   final orderId = settings.arguments as String?;
       //   return MaterialPageRoute(
       //     builder: (_) => OrderSuccessPage(orderId: orderId),
       //   );
-    // Add more routes as needed
+      // case profile:
+      //   return MaterialPageRoute(builder: (_) => const ProfilePage());
+      // case orders:
+      //   return MaterialPageRoute(builder: (_) => const OrdersPage());
+      // case orderDetail:
+      //   return MaterialPageRoute(builder: (_) => const OrderDetailPage());
+      // case categories:
+      //   return MaterialPageRoute(builder: (_) => const CategoriesPage());
+      // case search:
+      //   return MaterialPageRoute(builder: (_) => const SearchPage());
+      // case wishlist:
+      //   return MaterialPageRoute(builder: (_) => const WishlistPage());
       default:
-      // If there is no such named route, return an error page
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-              child: Text('Route ${settings.name} not found'),
-            ),
+            body: Center(child: Text('Route ${settings.name} not found')),
           ),
         );
     }
   }
 
   // Navigation helpers
-  static void navigateToLogin(BuildContext context) {
-    Navigator.pushNamed(context, login);
+  static void navigateTo(BuildContext context, String route, {Object? arguments}) {
+    Navigator.pushNamed(context, route, arguments: arguments);
   }
 
-  static void navigateToRegister(BuildContext context) {
-    Navigator.pushNamed(context, register);
+  static void navigateToAndReplace(BuildContext context, String route, {Object? arguments}) {
+    Navigator.pushReplacementNamed(context, route, arguments: arguments);
   }
 
-  static void navigateToHome(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, home, (route) => false);
-  }
-
-  // static void navigateToProductDetail(BuildContext context, Product product) {
-  //   Navigator.pushNamed(
-  //     context,
-  //     productDetail,
-  //     arguments: product,
-  //   );
-  // }
-
-  static void navigateToProductList(BuildContext context, {String? categoryId, String? searchQuery}) {
-    Navigator.pushNamed(
-      context,
-      productList,
-      arguments: {
-        'categoryId': categoryId,
-        'searchQuery': searchQuery,
-      },
-    );
-  }
-
-  static void navigateToCart(BuildContext context) {
-    Navigator.pushNamed(context, cart);
-  }
-
-  static void navigateToCheckout(BuildContext context) {
-    Navigator.pushNamed(context, checkout);
-  }
-
-  static void navigateToOrderSuccess(BuildContext context, String orderId) {
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      orderSuccess,
-          (route) => false,
-      arguments: orderId,
-    );
+  static void navigateToAndRemoveUntil(BuildContext context, String route) {
+    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
   }
 }

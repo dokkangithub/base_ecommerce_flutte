@@ -3,15 +3,15 @@
 enum Environment { development, staging, production }
 
 class AppConfig {
-  final String apiBaseUrl;
-  final Environment environment;
-  final bool enableLogging;
-  final String appName;
-  final String appVersion;
-  final String? wordpressUrl;
-  final String? laravelUrl;
-  final int connectTimeout;
-  final int receiveTimeout;
+  String apiBaseUrl;
+  Environment environment;
+  bool enableLogging;
+  String appName;
+  String appVersion;
+  String? wordpressUrl;
+  String? laravelUrl;
+  int connectTimeout;
+  int receiveTimeout;
 
   static final AppConfig _instance = AppConfig._internal();
 
@@ -43,28 +43,16 @@ class AppConfig {
     int? connectTimeout,
     int? receiveTimeout,
   }) {
-    _instance
-      ..environment = environment
-      ..apiBaseUrl = apiBaseUrl
-      ..wordpressUrl = wordpressUrl ?? this.wordpressUrl
-      ..laravelUrl = laravelUrl ?? this.laravelUrl
-      ..enableLogging = enableLogging ?? this.enableLogging
-      ..appName = appName ?? this.appName
-      ..appVersion = appVersion ?? this.appVersion
-      ..connectTimeout = connectTimeout ?? this.connectTimeout
-      ..receiveTimeout = receiveTimeout ?? this.receiveTimeout;
+    this.environment = environment;
+    this.apiBaseUrl = apiBaseUrl;
+    this.wordpressUrl = wordpressUrl ?? this.wordpressUrl;
+    this.laravelUrl = laravelUrl ?? this.laravelUrl;
+    this.enableLogging = enableLogging ?? this.enableLogging;
+    this.appName = appName ?? this.appName;
+    this.appVersion = appVersion ?? this.appVersion;
+    this.connectTimeout = connectTimeout ?? this.connectTimeout;
+    this.receiveTimeout = receiveTimeout ?? this.receiveTimeout;
   }
-
-  // Allow modification of values for testing
-  set environment(Environment value) => _instance.environment = value;
-  set apiBaseUrl(String value) => _instance.apiBaseUrl = value;
-  set wordpressUrl(String? value) => _instance.wordpressUrl = value;
-  set laravelUrl(String? value) => _instance.laravelUrl = value;
-  set enableLogging(bool value) => _instance.enableLogging = value;
-  set appName(String value) => _instance.appName = value;
-  set appVersion(String value) => _instance.appVersion = value;
-  set connectTimeout(int value) => _instance.connectTimeout = value;
-  set receiveTimeout(int value) => _instance.receiveTimeout = value;
 
   // Helper method to check if we're in production
   bool get isProduction => environment == Environment.production;
